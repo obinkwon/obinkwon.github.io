@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Search Results | obinkwon</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>obinkwon</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Search Results</h1>
+
+  
+  
+  <time datetime="0001-01-01T00:00:00&#43;00:00">January 1, 1</time>
+
+  <p>This file exists solely to respond to /search URL with the related <code>search</code> layout template.</p>
+<p>No content shown here is rendered, all content is based in the template layouts/page/search.html</p>
+<p>Setting a very low sitemap priority will tell search engines this is not important content.</p>
+<p>This implementation uses Fusejs, jquery and mark.js</p>
+<h2 id="initial-setup">Initial setup</h2>
+<p>Search  depends on additional output content type of JSON in config.toml</p>
+<pre tabindex="0"><code>[outputs]
+  home = [&#34;HTML&#34;, &#34;JSON&#34;]
+</code></pre><h2 id="searching-additional-fileds">Searching additional fileds</h2>
+<p>To search additional fields defined in front matter, you must add it in 2 places.</p>
+<h3 id="edit-layouts_defaultindexjson">Edit layouts/_default/index.JSON</h3>
+<p>This exposes the values in /index.json
+i.e. add <code>category</code></p>
+<pre tabindex="0"><code>...
+  &#34;contents&#34;:{{ .Content | plainify | jsonify }}
+  {{ if .Params.tags }},
+  &#34;tags&#34;:{{ .Params.tags | jsonify }}{{end}},
+  &#34;categories&#34; : {{ .Params.categories | jsonify }},
+...
+</code></pre><h3 id="edit-fusejs-options-to-search">Edit fuse.js options to Search</h3>
+<p><code>static/js/search.js</code></p>
+<pre tabindex="0"><code>keys: [
+  &#34;title&#34;,
+  &#34;contents&#34;,
+  &#34;tags&#34;,
+  &#34;categories&#34;
+]
+</code></pre>
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
