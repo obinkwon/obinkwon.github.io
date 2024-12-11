@@ -154,3 +154,7 @@ a {
 a:hover, a:focus, a:active {
   color: #824027;
 }
+
+.resume-content > .hangeul {
+  font-family: 'Noto Sans KR', sans-serif !important;
+}
